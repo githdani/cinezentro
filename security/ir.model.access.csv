@@ -1,0 +1,19 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+pelicula_jefe,pelicula jefe,model_cinezentro_pelicula,group_jefe,1,1,1,1
+sala_jefe,sala jefe,model_cinezentro_sala,group_jefe,1,1,1,1
+funciones_jefe,funciones jefe,model_cinezentro_funciones,group_jefe,1,1,1,1
+boletos_jefe,boletos jefe,model_cinezentro_boletos,group_jefe,1,1,1,1
+opinion_jefe,opinion jefe,model_cinezentro_opinion,group_jefe,1,1,1,1
+
+pelicula_empleado,pelicula empleado,model_cinezentro_pelicula,group_empleado,1,1,0,0
+sala_empleado,sala empleado,model_cinezentro_sala,group_empleado,1,1,0,0
+funciones_empleado,funciones empleado,model_cinezentro_funciones,group_empleado,1,1,0,0
+boletos_empleado,boletos empleado,model_cinezentro_boletos,group_empleado,1,1,1,1
+opinion_empleado,opinion empleado,model_cinezentro_opinion,group_empleado,1,1,1,1
+
+pelicula_read_all,pelicula all,model_cinezentro_pelicula,,1,0,0,0
+sala_read_all,sala all,model_cinezentro_sala,,1,0,0,0
+funciones_read_all,funciones all,model_cinezentro_funciones,,1,0,0,0
+boletos_read_all,boletos all,model_cinezentro_boletos,,1,0,0,0
+opinion_read_all,opinion all,model_cinezentro_opinion,,1,0,0,0

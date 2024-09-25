@@ -1,0 +1,10 @@
+<odoo>
+    <data>
+        <record id="group_jefe" model="res.groups">
+            <field name="name">CineZentro / Jefe</field>
+        </record>
+        <record id="group_empleado" model="res.groups">
+            <field name="name">CineZentro / Empleado</field>
+        </record>
+    </data>
+</odoo>

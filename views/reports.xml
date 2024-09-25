@@ -1,0 +1,213 @@
+<odoo>
+<data>
+
+<!--Peliculas-->
+
+    <report
+        id="report_pelicula"
+        model="cinezentro.pelicula"
+        string="Informe de películas"
+        name="cinezentro.report_pelicula_view"
+        file="cinezentro.informe_de_pelicula"
+        report_type="qweb-pdf" />
+
+    <template id="report_pelicula_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 t-field="doc.name"/>
+                        <p>Género: <span t-field="doc.genero"/> </p>
+                        <p>Duración (min): <span t-field="doc.duracion"/> </p>
+                        <p>Fecha de estreno: <span t-field="doc.fecha_estreno"/> </p>
+                        <p>Sinopsis:</p>
+                        <p> <span t-field="doc.sinopsis"/> </p>
+                        <p>Puntuación: <span t-field="doc.puntuacion"/> </p>
+                        <h3>Funciones:</h3>
+                        <ul>
+                            <t t-foreach="doc.funciones_ids" t-as="fun">
+                                <li><span>FUNCION: </span> <span t-field="fun.name"/>    
+                                <span>FECHA Y HORA: </span>    <span t-field="fun.fecha_hora"/> 
+                                <span>PRECIO ENTRADA: </span>    <span t-field="fun.precio_entrada"/></li>
+                            </t>
+                        </ul>
+                        <h3>Opiniones:</h3>
+                        <ul>
+                            <t t-foreach="doc.opiniones_ids" t-as="opi">
+                                <li><span>CLIENTE: </span> <span t-field="opi.cliente_id"/>     
+                                <span>COMENTARIO: </span> <span t-field="opi.comentario"/>    
+                                <span>PUNTUACION: </span> <span t-field="opi.puntuacion_opi"/></li>
+                            </t>
+                        </ul>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+<!--Salas-->
+    <report
+        id="report_sala"
+        model="cinezentro.sala"
+        string="Informe de salas"
+        name="cinezentro.report_sala_view"
+        file="cinezentro.informe_de_sala"
+        report_type="qweb-pdf" />
+
+    <template id="report_sala_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2><span t-field="doc.name"/></h2>
+                        <p>Capacidad: <span t-field="doc.capacidad"/> </p>
+                        <p>Ubicación: <span t-field="doc.ubicacion"/> </p>
+                        <h3>Funciones:</h3>
+                        <ul>
+                            <t t-foreach="doc.funciones_ids" t-as="fun">
+                                <li><span>FUNCION: </span> <span t-field="fun.name"/>    
+                                <span>FECHA Y HORA: </span>    <span t-field="fun.fecha_hora"/> 
+                                <span>PRECIO ENTRADA: </span>    <span t-field="fun.precio_entrada"/>
+                                <span>PELICULA: </span>    <span t-field="fun.pelicula"/></li>
+                            </t>
+                        </ul>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+<!--Funciones-->
+    <report
+        id="report_funciones"
+        model="cinezentro.funciones"
+        string="Informe de funciones"
+        name="cinezentro.report_funciones_view"
+        file="cinezentro.informe_de_funciones"
+        report_type="qweb-pdf" />
+
+    <template id="report_funciones_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 t-field="doc.name"/>
+                        <p>Fecha y hora: <span t-field="doc.fecha_hora"/> </p>
+                        <p>Precio: <span t-field="doc.precio_entrada"/> </p>
+                        <p>Pelicula: <span t-field="doc.pelicula"/> </p>
+                        <p>Sala: <span t-field="doc.sala_id"/> </p>
+                        <h3>Boletos:</h3>
+                        <ul>
+                            <t t-foreach="doc.boletos_ids" t-as="bol">
+                                <li><span>CLIENTE: </span> <span t-field="bol.cliente_id"/>    
+                                <span>ASIENTOS: </span>    <span t-field="bol.numero_asiento"/> 
+                                <span>PRECIO TOTAL: </span>    <span t-field="bol.precio_pagado"/></li>
+                            </t>
+                        </ul>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+<!--Boletos-->
+    <report
+        id="report_boletos"
+        model="cinezentro.boletos"
+        string="Informe de boletos"
+        name="cinezentro.report_boletos_view"
+        file="cinezentro.informe_de_boletos"
+        report_type="qweb-pdf" />
+
+    <template id="report_boletos_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Entrada</h2>
+                        <p>Cliente: <span t-field="doc.cliente_id"/> </p>
+                        <p>Función: <span t-field="doc.funcion_id"/> </p>
+                        <p>Asientos: <span t-field="doc.numero_asiento"/> </p>
+                        <p>Precio total: <span t-field="doc.precio_pagado"/> </p>
+                        <h3>Información de la función:</h3>
+                        <ul>
+                            <t t-foreach="doc.funcion_id" t-as="fun">
+                                <li><span>FUNCION: </span> <span t-field="fun.name"/>    
+                                <span>FECHA Y HORA: </span>    <span t-field="fun.fecha_hora"/> 
+                                <span>PRECIO ENTRADA: </span>    <span t-field="fun.precio_entrada"/>
+                                <span>PELICULA: </span>    <span t-field="fun.pelicula"/></li>
+                            </t>
+                        </ul>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+
+<!--Opiniones-->
+    <report
+        id="report_opinion"
+        model="cinezentro.opinion"
+        string="Informe de opiniones"
+        name="cinezentro.report_opinion_view"
+        file="cinezentro.informe_de_opinion"
+        report_type="qweb-pdf" />
+
+    <template id="report_opinion_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Opinión de la película: <span t-field="doc.pelicula_id"/></h2>
+                        <p>Cliente: <span t-field="doc.cliente_id"/> </p>
+                        <p>Película: <span t-field="doc.pelicula_id"/> </p>
+                        <p>Comentario: </p>
+                        <p><span t-field="doc.comentario"/> </p>
+                        <p>Puntuación: <span t-field="doc.puntuacion_opi"/> </p>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+<!--Clientes-->
+    <report
+        id="report_cliente"
+        model="res.partner"
+        string="Informe de clientes"
+        name="cinezentro.report_cliente_view"
+        file="cinezentro.informe_de_cliente"
+        report_type="qweb-pdf" />
+
+    <template id="report_cliente_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2><span t-field="doc.display_name"/></h2>
+                        <p>Cliente: <span t-field="doc.display_name"/> </p>
+                        <h3>Boletos:</h3>
+                        <ul>
+                            <t t-foreach="doc.boletos_ids" t-as="bol">
+                                <li><span>FUNCION: </span> <span t-field="bol.funcion_id"/>    
+                                <span>ASIENTOS: </span>    <span t-field="bol.numero_asiento"/> 
+                                <span>PRECIO TOTAL: </span>    <span t-field="bol.precio_pagado"/></li>
+                            </t>
+                        </ul>
+                        <h3>Opiniones:</h3>
+                        <ul>
+                            <t t-foreach="doc.opiniones_ids" t-as="opi">
+                                <li><span>PELICULA: </span> <span t-field="opi.pelicula_id"/>     
+                                <span>COMENTARIO: </span> <span t-field="opi.comentario"/>    
+                                <span>PUNTUACION: </span> <span t-field="opi.puntuacion_opi"/></li>
+                            </t>
+                        </ul>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</data>
+</odoo>

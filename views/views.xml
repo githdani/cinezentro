@@ -1,0 +1,244 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+
+    <!-- Peliculas -->
+    <record model="ir.ui.view" id="cinezentro.pelicula_list">
+      <field name="name">cinezentro list</field>
+      <field name="model">cinezentro.pelicula</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="genero"/>
+          <field name="duracion"/>
+          <field name="fecha_estreno"/>
+          <field name="sinopsis"/>
+          <field name="puntuacion"/>
+          <field name="funciones_ids"/>
+          <field name="opiniones_ids"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="cinezentro.pelicula_form">
+      <field name="name">cinezentro pelicula list</field>
+      <field name="model">cinezentro.pelicula</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="name"/>
+            <field name="genero"/>
+            <field name="duracion"/>
+            <field name="fecha_estreno"/>
+            <field name="sinopsis"/>
+            <field name="puntuacion"/>
+            <field name="funciones_ids"/>
+            <field name="opiniones_ids"/>
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <!-- Salas -->
+
+    <record model="ir.ui.view" id="cinezentro.sala_list">
+      <field name="name">cinezentro list</field>
+      <field name="model">cinezentro.sala</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="capacidad"/>
+          <field name="ubicacion"/>
+          <field name="funciones_ids"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="cinezentro.sala_form">
+      <field name="name">cinezentro sala list</field>
+      <field name="model">cinezentro.sala</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="name"/>
+            <field name="capacidad"/>
+            <field name="ubicacion"/>
+            <field name="funciones_ids"/>
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <!-- Funciones -->
+
+    <record model="ir.ui.view" id="cinezentro.funciones_list">
+      <field name="name">cinezentro list</field>
+      <field name="model">cinezentro.funciones</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="pelicula"/>
+          <field name="sala_id"/>
+          <field name="fecha_hora"/>
+          <field name="precio_entrada"/>
+          <field name="boletos_ids"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="cinezentro.funciones_form">
+      <field name="name">cinezentro funciones list</field>
+      <field name="model">cinezentro.funciones</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="name"/>
+            <field name="pelicula"/>
+            <field name="sala_id"/>
+            <field name="fecha_hora"/>
+            <field name="precio_entrada"/>
+            <field name="boletos_ids"/>
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <!-- Boletos -->
+
+    <record model="ir.ui.view" id="cinezentro.boletos_list">
+      <field name="name">cinezentro list</field>
+      <field name="model">cinezentro.boletos</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="cliente_id"/>
+          <field name="funcion_id"/>
+          <field name="numero_asiento"/>
+          <field name="precio_pagado"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="cinezentro.boletos_form">
+      <field name="name">cinezentro boletos list</field>
+      <field name="model">cinezentro.boletos</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="cliente_id"/>
+            <field name="funcion_id"/>
+            <field name="numero_asiento"/>
+            <field name="precio_pagado"/>
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <!-- Opinion-->
+
+    <record model="ir.ui.view" id="cinezentro.opinion_list">
+      <field name="name">cinezentro list</field>
+      <field name="model">cinezentro.opinion</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="cliente_id"/>
+          <field name="comentario"/>
+          <field name="puntuacion_opi"/>
+          <field name="pelicula_id"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="cinezentro.opinion_form">
+      <field name="name">cinezentro opinion list</field>
+      <field name="model">cinezentro.opinion</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="cliente_id"/>
+            <field name="comentario"/>
+            <field name="puntuacion_opi"/>
+            <field name="pelicula_id"/>
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="cinezentro.pelicula_action_window">
+      <field name="name">Películas</field>
+      <field name="res_model">cinezentro.pelicula</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="cinezentro.sala_action_window">
+      <field name="name">Salas</field>
+      <field name="res_model">cinezentro.sala</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="cinezentro.funciones_action_window">
+      <field name="name">Funciones</field>
+      <field name="res_model">cinezentro.funciones</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="cinezentro.boletos_action_window">
+      <field name="name">Boletos</field>
+      <field name="res_model">cinezentro.boletos</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="cinezentro.opinion_action_window">
+      <field name="name">Opiniones</field>
+      <field name="res_model">cinezentro.opinion</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="cinezentro.action_server">
+      <field name="name">cinezentro server</field>
+      <field name="model_id" ref="model_cinezentro_cinezentro"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+    <menuitem name="Cine Zentro" id="cinezentro.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Películas" id="cinezentro.pelicula" parent="cinezentro.menu_root"/>
+    <menuitem name="Salas" id="cinezentro.sala" parent="cinezentro.menu_root"/>
+    <menuitem name="Funciones" id="cinezentro.funciones" parent="cinezentro.menu_root"/>
+    <menuitem name="Boletos" id="cinezentro.boletos" parent="cinezentro.menu_root"/>
+    <menuitem name="Opiniones" id="cinezentro.opinion" parent="cinezentro.menu_root"/>
+
+    <!-- actions -->
+
+    <menuitem name="Películas" id="cinezentro.pelisub" parent="cinezentro.pelicula"
+              action="cinezentro.pelicula_action_window"/>
+
+    <menuitem name="Salas" id="cinezentro.salasub" parent="cinezentro.sala"
+              action="cinezentro.sala_action_window"/>
+
+    <menuitem name="Funciones" id="cinezentro.funcionessub" parent="cinezentro.funciones"
+              action="cinezentro.funciones_action_window"/>
+    
+    <menuitem name="Boletos" id="cinezentro.boletossub" parent="cinezentro.boletos"
+              action="cinezentro.boletos_action_window"/>
+
+    <menuitem name="Opiniones" id="cinezentro.opinionsub" parent="cinezentro.opinion"
+              action="cinezentro.opinion_action_window"/>
+  </data>
+</odoo>
